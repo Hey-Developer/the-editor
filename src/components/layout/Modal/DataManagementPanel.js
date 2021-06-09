@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from "react";
 import draftToHtml from "draftjs-to-html";
-import htmlToDocx from "html-to-docx-buffer";
+import { asBlob } from "html-docx-js-typescript";
 import { saveAs } from "file-saver";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -26,7 +26,6 @@ import GetAppIcon from "@material-ui/icons/GetApp";
 import CloudDownloadIcon from "@material-ui/icons/CloudDownload";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import MenuIcon from "@material-ui/icons/Menu";
-import htmlToDocxCjs from "html-to-docx-buffer";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -90,14 +89,13 @@ const DataManagementPanel = () => {
 
   const downloadAllNotesAsZip = useCallback(() => {
     allNotes.forEach((note) => {
-      console.log(note.content);
       if (note.content) {
-        htmlToDocxCjs(draftToHtml(note.content))
+        asBlob(draftToHtml(note.content))
           .then((fb) => {
             saveAs(fb, `${note.title}.docx`);
           })
           .catch((err) => {
-            console.log(err.message);
+            console.error(err.message);
           });
       }
     });

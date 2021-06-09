@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { convertFromRaw, convertToRaw, EditorState } from "draft-js";
 import clsx from "clsx";
 import draftToHtml from "draftjs-to-html";
-import htmlToDocx from "html-to-docx-buffer";
+import { asBlob } from "html-docx-js-typescript";
 import { saveAs } from "file-saver";
 import moment from "moment";
 import Hotkeys from "react-hot-keys";
@@ -61,7 +61,6 @@ import {
   togglePanelAction,
 } from "../../../redux/Settings/actions";
 import { toggleEditModeAction } from "../../../redux/Category/actions";
-import htmlToDocxCjs from "html-to-docx-buffer";
 
 // Global Variables
 let initialState = {
@@ -170,10 +169,15 @@ const NoteEditor = () => {
     dispatch(restoreNoteAction(selectedNoteId));
   }, [selectedNoteId]);
 
-  const downloadNoteHandler = useCallback(async () => {
+  const downloadNoteHandler = useCallback(() => {
     if (noteState.htmlContentState !== "") {
-      const fileBuffer = await htmlToDocxCjs(noteState.htmlContentState);
-      saveAs(fileBuffer, `${selectedNote[0].title}.docx`);
+      asBlob(noteState.htmlContentState)
+        .then((data) => {
+          saveAs(data, `${selectedNote[0].title}.docx`);
+        })
+        .catch((error) => {
+          console.error(error.message);
+        });
     } else {
       alert("The Note is empty hence can't be downloaded");
     }
