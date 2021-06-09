@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# The.Editor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a built using react and clone app of www.takenote.dev/app clone, build for learning purpose only.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+As this is a clone app all the feature is same aa the takenote.dev app but with few major changes.
 
-### `npm start`
+### `wysiswyg editor instead of a markdown editor`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+I used a user firendly editor instead of a markdown editor,
+so that can normal user can also use it without any learning curve.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `docx format support`
 
-### `npm test`
+take note in an easy manner and export them in your comfortable format which is supported in your doc readers.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `Preview Mode`
 
-### `npm run build`
+see your note in preview mode to finalize your content.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `Keyboard Shortcuts`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+use the keyboard for all common tasks like creating notes, creating category, deleting note , toggle edit mode, open settings and other options
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `Drag and Drop`
 
-### `npm run eject`
+drag your notes to any category or in fac notes or in trash.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### `Search Notes`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+easily search all notes or notes within a category.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### `No Database`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+notes are only stored in the browser's local storage and are available for download and export to you alone.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Note: to contribute clone this repo and follow all `create-react-app`, commands to start it your local enviorment !**
