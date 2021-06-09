@@ -26,6 +26,7 @@ import GetAppIcon from "@material-ui/icons/GetApp";
 import CloudDownloadIcon from "@material-ui/icons/CloudDownload";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import MenuIcon from "@material-ui/icons/Menu";
+import htmlToDocxCjs from "html-to-docx-buffer";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -89,8 +90,9 @@ const DataManagementPanel = () => {
 
   const downloadAllNotesAsZip = useCallback(() => {
     allNotes.forEach((note) => {
-      if (note.content !== "") {
-        htmlToDocx(draftToHtml(note.content))
+      console.log(note.content);
+      if (note.content) {
+        htmlToDocxCjs(draftToHtml(note.content))
           .then((fb) => {
             saveAs(fb, `${note.title}.docx`);
           })

@@ -61,6 +61,7 @@ import {
   togglePanelAction,
 } from "../../../redux/Settings/actions";
 import { toggleEditModeAction } from "../../../redux/Category/actions";
+import htmlToDocxCjs from "html-to-docx-buffer";
 
 // Global Variables
 let initialState = {
@@ -106,7 +107,6 @@ const NoteEditor = () => {
   //@ Live-Hooks:
   // Logic for setting selected note id to null if category id changes.
   useEffect(() => {
-    console.log(firstRender);
     if (!firstRender) {
       if (selectedNoteId !== null) dispatch(resetSelectedNoteAction());
     }
@@ -164,7 +164,6 @@ const NoteEditor = () => {
   }, [selectedNoteId]);
 
   const restoreNoteHandler = useCallback(() => {
-    console.log("Hii");
     if (selectedNoteId === null) {
       alert("Please Select Note");
     }
@@ -172,9 +171,12 @@ const NoteEditor = () => {
   }, [selectedNoteId]);
 
   const downloadNoteHandler = useCallback(async () => {
-    contentState = noteState.editorState.getCurrentContent();
-    const fileBuffer = await htmlToDocx(noteState.htmlContentState);
-    saveAs(fileBuffer, `${selectedNote[0].title}.docx`);
+    if (noteState.htmlContentState !== "") {
+      const fileBuffer = await htmlToDocxCjs(noteState.htmlContentState);
+      saveAs(fileBuffer, `${selectedNote[0].title}.docx`);
+    } else {
+      alert("The Note is empty hence can't be downloaded");
+    }
   }, [noteState]);
 
   const openSettingModal = () => {
